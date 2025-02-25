@@ -1,0 +1,30 @@
+{
+  "name": "tdbag2_elvui",
+  "version": "1.0.5",
+  "description": "ElvUI style for tdBag2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo not implemented"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DengSir/tdBag2_Glass.git"
+  },
+  "keywords": [
+    "addon"
+  ],
+  "author": "Dencer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DengSir/tdBag2_Glass/issues"
+  },
+  "homepage": "https://github.com/DengSir/tdBag2_Glass#readme",
+  "wow": {
+    "name": "tdBag2_ElvUI",
+    "curse_id": 378606,
+    "builds": {
+      "Vanilla": "11506",
+      "Wrath": "30403"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+#@debug@
+## Interface: 11306
+## Version: 1.0.0
+#@end-debug@
+#@project-interface@
+#@project-version@
+## Title: tdBag2 ElvUI
+## Author: Dencer
+## Dependencies: tdBag2
+## LoadOnDemand: 1
+## X-tdBag2-Style: ElvUI
+
+Style.xml
+Addon.lua
