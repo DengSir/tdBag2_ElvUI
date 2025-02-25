@@ -73,7 +73,7 @@
                     </Layer>
                 </Layers>
                 <Frames>
-                    <Button name="$parentClearButton" parentKey="clearButton" hidden="true">
+                    <Button parentKey="clearButton" hidden="true">
                         <Size x="17" y="17"/>
                         <Anchors>
                             <Anchor point="RIGHT" x="-3" y="0"/>

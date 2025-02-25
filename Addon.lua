@@ -95,6 +95,7 @@ Addon:RegisterStyle('ElvUI', {
         Frame = {
             Constructor = function(self, ...)
                 self:SetTemplate(nil, true)
+                S:HandleCloseButton(self.Close)
 
                 if self.OwnerSelector then
                     ApplyItemButton(self.OwnerSelector)
