@@ -13,6 +13,7 @@ if not ElvUI then
 end
 
 local E = unpack(ElvUI)
+local S = E:GetModule('Skins')
 
 local function ApplyItemButton(button)
     button:SetNormalTexture(E.ClearTexture)
@@ -20,18 +21,23 @@ local function ApplyItemButton(button)
     button:StyleButton()
 
     local name = button:GetName()
-    local icon = name and _G[button:GetName() .. 'IconTexture'] or button.IconTexture or button.Icon or button.texture
+    local icon = (name and _G[button:GetName() .. 'IconTexture']) or button.IconTexture or button.Icon or button.texture
     if icon then
         icon:SetInside()
         icon:SetTexCoord(unpack(E.TexCoords))
     end
 
-    if button.bg then
-        button.bg:SetInside()
-    end
-
     if button.IconBorder then
         button.IconBorder:Hide()
+    end
+
+    if button.Icon then
+        button.Icon:SetDrawLayer('ARTWORK')
+    end
+
+    if button.texture and button.Center then
+        print(button)
+        print(button.Center:GetDrawLayer())
     end
 end
 
@@ -87,16 +93,13 @@ Addon:RegisterStyle('ElvUI', {
 
     hooks = {
         Frame = {
-            Constructor = function(self)
-                self:SetTemplate('Transparent')
-            end,
-        },
+            Constructor = function(self, ...)
+                self:SetTemplate(nil, true)
 
-        PluginFrame = {
-            CreatePluginButton = function(self, plugin)
-                local button = self.pluginButtons[plugin.key]
-                ApplyItemButton(button)
-            end
+                if self.OwnerSelector then
+                    ApplyItemButton(self.OwnerSelector)
+                end
+            end,
         },
 
         ContainerFrame = {
@@ -113,13 +116,23 @@ Addon:RegisterStyle('ElvUI', {
             end,
         },
 
-        SearchBox = {
-            Constructor = function(self)
-                self:SetTemplate('Transparent')
+        TitleContainer = {
+            Constructor = function(self, ...)
+                S:HandleScrollBar(self.ScrollFrame.ScrollBar)
+            end,
+        },
+
+        PluginFrame = {
+            CreatePluginButton = function(self, plugin)
+                ApplyItemButton(self.pluginButtons[plugin.key])
             end,
         },
 
         ItemBase = {Constructor = ApplyItemButton},
-        Bag = {Constructor = ApplyItemButton},
+        Bag = {
+            Constructor = function(self)
+                ApplyItemButton(self)
+            end,
+        },
     },
 })

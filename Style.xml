@@ -2,21 +2,13 @@
 ..\FrameXML\UI.xsd">
     <Button name="tdBag2ElvUIToggleButtonTemplate" virtual="true">
         <Size x="20" y="20"/>
-        <!-- <HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD"/>
-        <PushedTexture file="Interface\Buttons\UI-Quickslot-Depress"/>
-        <NormalTexture file="Interface\Buttons\UI-Quickslot2">
-            <Size x="34" y="34"/>
-            <Anchors>
-                <Anchor point="CENTER" x="0" y="0"/>
-            </Anchors>
-        </NormalTexture> -->
         <Layers>
             <Layer level="BACKGROUND" textureSubLevel="0">
                 <Texture parentKey="bg">
                     <Color r="0" g="0" b="0"/>
                 </Texture>
             </Layer>
-            <Layer level="BACKGROUND" textureSubLevel="1">
+            <Layer level="OVERLAY">
                 <Texture parentKey="texture"/>
             </Layer>
         </Layers>
@@ -60,10 +52,10 @@
                 </Anchors>
             </Frame>
             <EditBox parentKey="SearchBox" autoFocus="false" inherits="BackdropTemplate">
-                <Size y="28"/>
+                <Size y="26"/>
                 <Anchors>
-                    <Anchor point="LEFT" relativePoint="TOPLEFT" x="6" y="-45" />
-                    <Anchor point="RIGHT" relativePoint="TOPRIGHT" x="-6" y="-45" />
+                    <Anchor point="LEFT" relativePoint="TOPLEFT" x="8" y="-45" />
+                    <Anchor point="RIGHT" relativePoint="TOPRIGHT" x="-8" y="-45" />
                 </Anchors>
                 <Layers>
                     <Layer level="ARTWORK">
@@ -120,15 +112,8 @@
                 <Scripts>
                     <OnLoad>
                         SearchBoxTemplate_OnLoad(self)
-                        self:SetBackdrop{
-                            bgFile = [[Interface\Tooltips\UI-Tooltip-Background]],
-                            edgeFile = [[Interface\Tooltips\UI-Tooltip-Border]],
-                            tile = true, edgeSize = 12, tileSize = 12,
-                            insets = {left=3, right=3, top=3, bottom=3},
-                        }
+                        self:SetTemplate('Transparent')
                         self:SetTextInsets(20, 20, 0, 0)
-                        self:SetBackdropColor(0, 0, 0, 0.5)
-                        self:SetBackdropBorderColor(1, 1, 1, 0.8)
                         self.Instructions:SetPoint('TOPLEFT', self, 'TOPLEFT', 20, 0)
                     </OnLoad>
                     <OnEscapePressed function="EditBox_ClearFocus"/>
@@ -140,6 +125,11 @@
                 <FontString inherits="GameFontHighlightSmall"/>
             </EditBox>
         </Frames>
+        <Scripts>
+            <OnLoad>
+                self:SetTemplate('Transparent')
+            </OnLoad>
+        </Scripts>
     </Frame>
     <Frame name="tdBag2ElvUIFrameTemplate" inherits="tdBag2ElvUIBaseFrameTemplate" virtual="true">
         <KeyValues>
@@ -173,7 +163,7 @@
             </Button>
         </Frames>
         <Scripts>
-            <OnLoad>
+            <OnLoad inherit="append">
                 self.Inset:SetPoint('BOTTOMRIGHT', 0, 22)
                 self.TitleFrame:SetPoint('TOPLEFT', self.PluginFrame, 'TOPRIGHT', 5, 0)
             </OnLoad>
