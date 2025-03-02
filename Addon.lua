@@ -34,11 +34,6 @@ local function ApplyItemButton(button)
     if button.Icon then
         button.Icon:SetDrawLayer('ARTWORK')
     end
-
-    if button.texture and button.Center then
-        print(button)
-        print(button.Center:GetDrawLayer())
-    end
 end
 
 Addon:RegisterStyle('ElvUI', {

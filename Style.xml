@@ -206,6 +206,28 @@
                     <Anchor point="LEFT" relativeKey="$parent.Toggle3" relativePoint="RIGHT" />
                 </Anchors>
             </Button>
+            <PlayerModel parentKey="Model" inherits="ModelWithControlsTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" />
+                    <Anchor point="BOTTOMRIGHT" x="0" y="60" />
+                </Anchors>
+            </PlayerModel>
+            <Frame parentKey="NoModel">
+                <Anchors>
+                    <Anchor point="TOPLEFT" />
+                    <Anchor point="BOTTOMRIGHT" x="0" y="60" />
+                </Anchors>
+                <Layers>
+                    <Layer level="ARTWORK">
+                        <Texture parentKey="Faction">
+                            <Size x="256" y="256"/>
+                            <Anchors>
+                                <Anchor point="CENTER" x="0" y="0"/>
+                            </Anchors>
+                        </Texture>
+                    </Layer>
+                </Layers>
+            </Frame>
         </Frames>
     </Frame>
 </Ui>
